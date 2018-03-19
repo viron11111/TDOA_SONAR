@@ -1,23 +1,10 @@
 #!/usr/bin/env python
 import rospy
-import rosparam
-import random
 import numpy as np
-import matplotlib.pyplot as plt
 
 from std_msgs.msg import Header
-from pinger_tracker.msg import *
+from advantech_pci1714_driver.msg import *
 
-from advantech_pci1714.msg import *
-
-import sys
-import math
-
-from dynamic_reconfigure.server import Server
-from pinger_tracker.cfg import SignalConfig
-from pinger_tracker.srv import *
-from sonar.msg import Sensitivity, Slope, Negative_slope, Plot
-from pinger_tracker.msg import Calculated_time_stamps
 
 class condition():     
 
@@ -479,14 +466,14 @@ class condition():
 
         #rospy.Subscriber('hydrophones/pingmsg', Pingdata, self.condition_data) # for simulation and bags
         rospy.Subscriber('hydrophones/pingraw', Pingdata, self.condition_data)
-        rospy.Subscriber('hydrophones/sensitivity', Sensitivity, self.change_sensitivity)
+        #rospy.Subscriber('hydrophones/sensitivity', Sensitivity, self.change_sensitivity)
 
         self.simulate_pub = rospy.Publisher('hydrophones/pingconditioned', Pingdata, queue_size = 1)
-        self.slope_pub = rospy.Publisher('hydrophones/slope', Slope, queue_size = 1)
-        self.neg_slope_pub = rospy.Publisher('hydrophones/negative_slope', Negative_slope, queue_size=1)
-        self.plot_pub = rospy.Publisher('/hydrophones/plot', Plot, queue_size=1)
+        #self.slope_pub = rospy.Publisher('hydrophones/slope', Slope, queue_size = 1)
+        #self.neg_slope_pub = rospy.Publisher('hydrophones/negative_slope', Negative_slope, queue_size=1)
+        #self.plot_pub = rospy.Publisher('/hydrophones/plot', Plot, queue_size=1)
 
-        self.break_val = 0.01 #0.15 #voltage in which threshold is triggered
+        self.break_val = 0.05 #0.15 #voltage in which threshold is triggered
         self.min_break_val = -self.break_val
 
         self.max_break_val = 0.25

@@ -14,6 +14,12 @@ find_package(catkin REQUIRED COMPONENTS
   visualization_msgs
 )
 
+## Generate messages in the 'msg' folder
+ add_message_files(
+   FILES
+   Calculated_time_stamps.msg
+ )
+
 ## Generate services in the 'srv' folder
  add_service_files(
    FILES

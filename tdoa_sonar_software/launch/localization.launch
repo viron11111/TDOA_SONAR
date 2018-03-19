@@ -3,10 +3,17 @@
   <node pkg="tdoa_sonar_software" type="signal_conditioner_simple.py" name="signal_conditioner" respawn="true">
   </node>  
 
+  <node pkg="tdoa_sonar_software" type="phase_shift.py" name="phase_shift" respawn="true">
+  </node>   
+
   <node pkg="tdoa_sonar_software" type="cardinal.py" name="cardinal" respawn="true">
   </node>  
 
   <node pkg="tdoa_sonar_software" type="localization_service.py" name="localization_service" respawn="true">
   </node>  
+
+  <!-- FOR PLOTTING PURPOSES -->
+  <node pkg="tdoa_sonar_software" type="plotting_for_paper.py" name="plotting" respawn="true">
+  </node>
 
 </launch>
