@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(advantech_pci1714)
+project(advantech_pci1714_driver)
+
+## Compile as C++11, supported in ROS Kinetic and newer
+# add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
   message_generation
@@ -34,13 +37,8 @@ include_directories(include
   ${catkin_INCLUDE_DIRS}
 )
 
-##add_executable(testing src/test.cpp)
-#target_link_libraries(testing ${catkin_LIBRARIES})
-#add_dependencies(testing advantech_pci1714_cpp)
-
-add_executable(advantechDriver src/advantechDriver.cpp) # libraries/bdaqctrl.h libraries/compatibility.h)
+add_executable(advantechPCI1714Driver src/advantechPCI1714Driver.cpp) # libraries/bdaqctrl.h libraries/compatibility.h)
 add_library(libbiodaq STATIC IMPORTED)
 set_property(TARGET libbiodaq PROPERTY IMPORTED_LOCATION /usr/lib/libbiodaq.so)
-target_link_libraries(advantechDriver ${catkin_LIBRARIES} libbiodaq)
-add_dependencies(advantechDriver advantech_pci1714_cpp)
-
+target_link_libraries(advantechPCI1714Driver ${catkin_LIBRARIES} libbiodaq)
+add_dependencies(advantechPCI1714Driver advantech_pci1714_driver_cpp)

@@ -16,9 +16,9 @@
 #include <sstream>
 #include <typeinfo>
 
-#include "advantech_pci1714/Ping_received.h"
-#include "advantech_pci1714/Ping.h"
-#include "advantech_pci1714/Pingdata.h"
+#include "advantech_pci1714_driver/Ping_received.h"
+#include "advantech_pci1714_driver/Ping.h"
+#include "advantech_pci1714_driver/Pingdata.h"
 
 using namespace Automation::BDaq;
 using namespace std;
@@ -105,8 +105,8 @@ public:
 
 		ros::NodeHandle n;
 
-		ros::Publisher pingpub = n.advertise<advantech_pci1714::Pingdata>("/hydrophones/pingraw",1000);
-		advantech_pci1714::Pingdata msg;
+		ros::Publisher pingpub = n.advertise<advantech_pci1714_driver::Pingdata>("/hydrophones/pingraw",1000);
+		advantech_pci1714_driver::Pingdata msg;
 		msg.header.stamp = ros::Time::now();
 		msg.header.frame_id = "/world";
 		msg.channels = channelCount;
@@ -122,8 +122,8 @@ public:
 		//ROS_INFO("%f",msg.data;
 			
 
-		ros::ServiceClient client = n.serviceClient<advantech_pci1714::Ping_received>("/hydrophones/ready");
-		advantech_pci1714::Ping_received srv;
+		ros::ServiceClient client = n.serviceClient<advantech_pci1714_driver::Ping_received>("/hydrophones/ready");
+		advantech_pci1714_driver::Ping_received srv;
 		srv.request;
 		client.call(srv);	
 
@@ -161,8 +161,8 @@ public:
 	}	
 };
 
-bool ping_publish(advantech_pci1714::Ping::Request &req,
-				  advantech_pci1714::Ping::Response &res)
+bool ping_publish(advantech_pci1714_driver::Ping::Request &req,
+				  advantech_pci1714_driver::Ping::Response &res)
 {
 	res.channels = channelCount;
 	res.samples = USER_BUFFER_SIZE;
@@ -181,7 +181,7 @@ int main(int argc, char **argv)
 	ros::NodeHandle n;
 
 	ros::ServiceServer service = n.advertiseService("/hydrophones/ping", ping_publish);
-	ros::Publisher pingpub = n.advertise<advantech_pci1714::Pingdata>("/hydrophones/pingraw",1);
+	ros::Publisher pingpub = n.advertise<advantech_pci1714_driver::Pingdata>("/hydrophones/pingraw",1);
 	//ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
 
