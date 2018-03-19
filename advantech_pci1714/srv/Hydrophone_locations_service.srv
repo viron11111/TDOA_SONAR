@@ -1,0 +1,5 @@
+---
+float32[] hydro0_xyz # in mm
+float32[] hydro1_xyz # in mm
+float32[] hydro2_xyz # in mm
+float32[] hydro3_xyz # in mm
