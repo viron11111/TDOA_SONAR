@@ -1,6 +1,9 @@
 # TDOA_SONAR
 SONAR repository for locating underwater pingers using Time Difference Of Arrival (TDOA)
 
+Includes Advantech hardware driver (from Advantech), Advantech ROS driver cpp (from me), and Python nodes for analyzing signals.  
+  
+Still have to clean up the code (it's a mess) and add README documentation. Loop a bag file (Feb 4, 2018 has some good ones) and enter "roslaunch tdoa_sonar_software localization.launch". Should show active plots of conditioned pings. 
 
 Distributor ID:	Ubuntu  
 Description:	Ubuntu 14.04.5 LTS  
