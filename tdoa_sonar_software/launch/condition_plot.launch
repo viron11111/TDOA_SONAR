@@ -1,9 +1,0 @@
-<launch>
-
-  <node pkg="sonar" type="plotting_for_paper.py" name="plotter" respawn="true">
-  </node> 
-
-  <node pkg="sound_localization" type="signal_conditioner_simple.py" name="signal_conditioner" respawn="true">
-  </node>  
-
-</launch>
