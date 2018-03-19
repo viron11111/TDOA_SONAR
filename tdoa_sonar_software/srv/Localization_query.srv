@@ -1,0 +1,10 @@
+float32 cardinal_bearing
+float32 stamp1
+float32 stamp2
+float32 stamp3
+---
+float64 x_pos
+float64 y_pos
+float64 z_pos 
+float64 heading
+float64 declination
