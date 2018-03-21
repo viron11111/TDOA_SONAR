@@ -6,7 +6,7 @@ import operator
 import numpy as np
 import matplotlib.pyplot as plt
 
-from advantech_pci1714_driver.msg import *
+from advantech_pci1714.msg import *
 
 class plotter():
 

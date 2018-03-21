@@ -3,7 +3,7 @@ import rospy
 import numpy as np
 
 from std_msgs.msg import Header
-from advantech_pci1714_driver.msg import *
+from advantech_pci1714.msg import *
 
 
 class condition():     

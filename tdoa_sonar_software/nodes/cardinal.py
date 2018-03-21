@@ -6,8 +6,10 @@ import sys
 import math
 
 from std_msgs.msg import Header, Float32
-from geometry_msgs.msg import Vector3Stamped
+from geometry_msgs.msg import Vector3, Vector3Stamped
 from tdoa_sonar_software.msg import *
+
+from tdoa_sonar_software.srv import *
 
 class solver():
 

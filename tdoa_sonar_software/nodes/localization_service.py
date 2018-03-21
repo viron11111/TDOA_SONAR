@@ -15,6 +15,8 @@ class solver():
         stamp2 = data.stamp2
         stamp3 = data.stamp3
 
+        #rospy.logwarn("printed from location response")
+
         (x_pos, y_pos, z_pos) = self.calc_vals(stamp1, stamp2, stamp3)
 
         crane_heading = np.arctan2(x_pos, y_pos) - np.pi/2       
@@ -119,7 +121,7 @@ class solver():
 
 
         if (discr < 0):
-            rospy.logerr("no real solution was found; set garbage values for P1 and P2")
+            #rospy.logerr("no real solution was found; set garbage values for P1 and P2")
 
             print discr
 
@@ -217,7 +219,7 @@ class solver():
                 sum2 = abs(P2[0]) + abs(P2[1]) + abs(P2[2])
 
                 if measured1_list == measured2_list and measured1_list == dellist:
-                    rospy.logwarn("P1 == P2 == dellist")
+                    #rospy.logwarn("P1 == P2 == dellist")
                     sum1 = abs(P1[0]) + abs(P1[1]) + abs(P1[2])
                     sum2 = abs(P2[0]) + abs(P2[1]) + abs(P2[2])
                     print "sum1: ", sum1
@@ -260,7 +262,7 @@ class solver():
                         rospy.logerr("defaulting to cardinal")   
 
                 elif sum1 > sum2:
-                    rospy.logwarn("measured1_list")
+                    #rospy.logwarn("measured1_list")
                     solution = P1
                     heading = p1_heading
                     self.psolution = 1    
@@ -295,7 +297,7 @@ class solver():
                         rospy.logerr("defaulting to cardinal")
 
                 elif sum2 > sum1:
-                    rospy.logwarn("measured2_list")
+                    #rospy.logwarn("measured2_list")
                     solution = P2
                     heading = p2_heading
                     self.psolution = 2  
@@ -330,7 +332,7 @@ class solver():
                         rospy.logerr("defaulting to cardinal")                    
 
                 elif (measured1_list == measured2_list) and measured1_list != dellist:
-                    rospy.logwarn("not equal")
+                    #rospy.logwarn("not equal")
                     sum1 = abs(P1[0]) + abs(P1[1]) + abs(P1[2])
                     sum2 = abs(P2[0]) + abs(P2[1]) + abs(P2[2])
                     print "sum1: ", sum1
@@ -432,10 +434,7 @@ class solver():
 
     def __init__(self):
         rospy.init_node('locating_service')
-        #rospy.Subscriber('/hydrophones/actual_time_stamps', Actual_time_stamps, self.calc_vals) #self.actu_vals)
-        rospy.Subscriber('/hydrophones/calculated_time_stamps', Calculated_time_stamps, self.calc_vals)
-
-        #self.cardinal_pub = rospy.Publisher('hydrophones/cardinal', Float32, queue_size = 1)
+        #rospy.Subscriber('/hydrophones/calculated_time_stamps', Calculated_time_stamps, self.calc_vals)
 
         self.location_serv = rospy.Service('/hydrophones/location_query', Localization_query, self.location_response)
 
