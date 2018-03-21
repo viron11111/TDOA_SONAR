@@ -1,0 +1,18 @@
+<launch>
+ 
+  <node pkg="pinger_tracker" type="phase_shift_trigger.py" name="phaseshift" respawn="true">
+  </node>
+
+  <node pkg="pinger_tracker" type="crane_method_3D.py" name="crane_method" respawn="true">
+  </node>
+
+  <node pkg="advantech_pci1714" type="advantechDriver" name="advantech_driver" respawn="true">
+  </node>
+
+  <node pkg="advantech_pci1714" type="sonar_handler.py" name="sonar_handler" respawn="true">
+  </node>
+
+  <node pkg="advantech_pci1714" type="ping_plotter.py" name="ping_plotter" respawn="true">
+  </node>
+
+</launch>
